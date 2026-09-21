@@ -97,8 +97,8 @@
 
 <body class="bg-black text-gray-300 font-mono min-h-screen relative selection:bg-gray-800 selection:text-white overflow-x-hidden" data-theme="red">
 
-  <!-- Background Canvas for Minimalist Particles -->
-  <canvas id="bg-canvas" class="fixed top-0 left-0 w-full h-full z-0 opacity-25 pointer-events-none"></canvas>
+  <!-- Background Canvas for Minimalist Cyber Grid -->
+  <canvas id="bg-canvas" class="fixed top-0 left-0 w-full h-full z-0 opacity-40 pointer-events-none"></canvas>
 
   <div class="relative z-20 flex flex-col min-h-screen">
     
@@ -818,7 +818,7 @@
       }
     }
 
-    /* ================= MINIMALIST PARTICLE CONSTELLATION BACKGROUND ================= */
+    /* ================= CYBER GRID & SCANNER BACKGROUND ================= */
     const canvas = document.getElementById('bg-canvas');
     const ctx = canvas.getContext('2d');
 
@@ -829,65 +829,48 @@
     resizeCanvas();
     window.addEventListener('resize', resizeCanvas);
 
-    const particles = [];
-    const particleCount = 45;
+    let scanY = 0;
+    const gridSpacing = 40;
 
-    class Particle {
-      constructor() {
-        this.x = Math.random() * canvas.width;
-        this.y = Math.random() * canvas.height;
-        this.vx = (Math.random() - 0.5) * 0.4;
-        this.vy = (Math.random() - 0.5) * 0.4;
-        this.radius = Math.random() * 1.5 + 1;
-      }
-
-      update() {
-        this.x += this.vx;
-        this.y += this.vy;
-
-        if (this.x < 0 || this.x > canvas.width) this.vx *= -1;
-        if (this.y < 0 || this.y > canvas.height) this.vy *= -1;
-      }
-
-      draw() {
-        ctx.beginPath();
-        ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
-        ctx.fillStyle = getComputedStyle(document.documentElement).getPropertyValue('--accent-color').trim() || '#ef4444';
-        ctx.fill();
-      }
-    }
-
-    for (let i = 0; i < particleCount; i++) {
-      particles.push(new Particle());
-    }
-
-    function animateParticles() {
+    function drawGrid() {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
-      const strokeColor = currentTheme === 'blue' ? 'rgba(59, 130, 246, ' : 'rgba(239, 68, 68, ';
 
-      for (let i = 0; i < particles.length; i++) {
-        particles[i].update();
-        particles[i].draw();
+      const themeRgb = currentTheme === 'blue' ? '59, 130, 246' : '239, 68, 68';
 
-        for (let j = i + 1; j < particles.length; j++) {
-          const dx = particles[i].x - particles[j].x;
-          const dy = particles[i].y - particles[j].y;
-          const dist = Math.sqrt(dx * dx + dy * dy);
+      // Draw Grid Lines
+      ctx.strokeStyle = `rgba(${themeRgb}, 0.08)`;
+      ctx.lineWidth = 1;
 
-          if (dist < 120) {
-            ctx.beginPath();
-            ctx.moveTo(particles[i].x, particles[i].y);
-            ctx.lineTo(particles[j].x, particles[j].y);
-            ctx.strokeStyle = `${strokeColor}${0.15 * (1 - dist / 120)})`;
-            ctx.lineWidth = 0.6;
-            ctx.stroke();
-          }
-        }
+      for (let x = 0; x < canvas.width; x += gridSpacing) {
+        ctx.beginPath();
+        ctx.moveTo(x, 0);
+        ctx.lineTo(x, canvas.height);
+        ctx.stroke();
       }
-      requestAnimationFrame(animateParticles);
+
+      for (let y = 0; y < canvas.height; y += gridSpacing) {
+        ctx.beginPath();
+        ctx.moveTo(0, y);
+        ctx.lineTo(canvas.width, y);
+        ctx.stroke();
+      }
+
+      // Draw Horizontal Scanner Line
+      const gradient = ctx.createLinearGradient(0, scanY - 30, 0, scanY + 30);
+      gradient.addColorStop(0, `rgba(${themeRgb}, 0)`);
+      gradient.addColorStop(0.5, `rgba(${themeRgb}, 0.35)`);
+      gradient.addColorStop(1, `rgba(${themeRgb}, 0)`);
+
+      ctx.fillStyle = gradient;
+      ctx.fillRect(0, scanY - 30, canvas.width, 60);
+
+      scanY += 1.2;
+      if (scanY > canvas.height + 30) scanY = -30;
+
+      requestAnimationFrame(drawGrid);
     }
 
-    animateParticles();
+    drawGrid();
   </script>
 </body>
 </html>
