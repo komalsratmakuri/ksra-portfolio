@@ -143,31 +143,55 @@
       <!-- ================= GUI MODE SECTION ================= -->
       <div id="gui-section" class="space-y-8">
         
-        <!-- Hero Section -->
-        <section class="bg-cyber-black/70 border border-cyber-border rounded-xl p-6 md:p-10 backdrop-blur border-l-4 border-l-cyber-cyan relative overflow-hidden">
-          <div class="max-w-3xl space-y-4">
-            <div class="inline-flex items-center space-x-2 text-xs font-semibold uppercase tracking-widest text-cyber-green bg-cyber-green/10 px-3 py-1 rounded-full border border-cyber-green/20">
-              <i class="fas fa-microchip"></i>
-              <span>Cybersecurity - Red Teamer and Analyst</span>
-            </div>
-            <h1 class="text-3xl sm:text-5xl font-extrabold text-white tracking-tight leading-tight">
-              Bridging Electronics Engineering, AI Autonomous Systems <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyber-cyan to-cyber-green"> and Cybersecurity</span>
-            </h1>
-            <p class="text-slate-400 text-sm sm:text-base leading-relaxed font-sans">
-              B.Tech Electronics & Communication Engineering graduate (2026) from KL University currently Interning in Cybersecurity Red Team as a Penetration Tester in India. Worked in multiple domains including embedded systems, VLSI, AI and Autonomous Systems and Data Analysis
-            </p>
-            <div class="pt-2 flex flex-wrap gap-4">
-              <a href="#projects-section" class="px-5 py-2.5 bg-cyber-cyan hover:bg-cyan-400 text-black font-bold text-sm rounded shadow-lg glow-cyan transition-all flex items-center space-x-2">
-                <i class="fas fa-project-diagram"></i>
-                <span>VIEW PROJECTS</span>
-              </a>
-              <button onclick="switchTab('cli'); executeCLICommand('help');" class="px-5 py-2.5 bg-cyber-card border border-slate-700 hover:border-cyber-green text-slate-200 hover:text-cyber-green font-bold text-sm rounded transition-all flex items-center space-x-2">
-                <i class="fas fa-terminal"></i>
-                <span>OPEN TERMINAL CLI</span>
-              </button>
-            </div>
-          </div>
-        </section>
+      <!-- Hero Section -->
+<section class="bg-cyber-black/70 border border-cyber-border rounded-xl p-6 md:p-10 backdrop-blur border-l-4 border-l-cyber-cyan relative overflow-hidden">
+  <div class="flex flex-col lg:flex-row items-center justify-between gap-8">
+    
+    <!-- Hero Text Content -->
+    <div class="max-w-2xl space-y-4">
+      <div class="inline-flex items-center space-x-2 text-xs font-semibold uppercase tracking-widest text-cyber-green bg-cyber-green/10 px-3 py-1 rounded-full border border-cyber-green/20">
+        <i class="fas fa-microchip"></i>
+        <span>Cybersecurity - Red Teamer and Analyst</span>
+      </div>
+      <h1 class="text-3xl sm:text-5xl font-extrabold text-white tracking-tight leading-tight">
+        Bridging Electronics Engineering, AI Autonomous Systems <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyber-cyan to-cyber-green"> and Cybersecurity</span>
+      </h1>
+      <p class="text-slate-400 text-sm sm:text-base leading-relaxed font-sans">
+        B.Tech Electronics & Communication Engineering graduate (2026) from KL University currently Interning in Cybersecurity Red Team as a Penetration Tester in India. Worked on multiple domains including Embedded systems, VLSI, AI and Autonomous Systems and Data Analysis
+      </p>
+      <div class="pt-2 flex flex-wrap gap-4">
+        <a href="#projects-section" class="px-5 py-2.5 bg-cyber-cyan hover:bg-cyan-400 text-black font-bold text-sm rounded shadow-lg glow-cyan transition-all flex items-center space-x-2">
+          <i class="fas fa-project-diagram"></i>
+          <span>VIEW PROJECTS</span>
+        </a>
+        <button onclick="switchTab('cli'); executeCLICommand('help');" class="px-5 py-2.5 bg-cyber-card border border-slate-700 hover:border-cyber-green text-slate-200 hover:text-cyber-green font-bold text-sm rounded transition-all flex items-center space-x-2">
+          <i class="fas fa-terminal"></i>
+          <span>OPEN TERMINAL CLI</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Profile Picture Container -->
+    <div class="relative group flex-shrink-0">
+      <!-- Cyber Glow Accent Frame -->
+      <div class="absolute -inset-1 rounded-2xl bg-gradient-to-r from-cyber-cyan to-cyber-green opacity-40 group-hover:opacity-100 transition duration-500 blur"></div>
+      
+      <!-- Image Wrapper -->
+      <div class="relative w-48 h-48 sm:w-56 sm:h-56 rounded-xl overflow-hidden border border-cyber-border bg-cyber-darker p-1">
+        <img 
+          src="profile.jpg" 
+          alt="Komal Sai Raj Atmakuri" 
+          class="w-full h-full object-cover rounded-lg filter grayscale contrast-125 hover:grayscale-0 transition-all duration-300"
+        />
+        <!-- Tech Overlay Tag -->
+        <div class="absolute bottom-2 left-2 right-2 bg-cyber-black/80 backdrop-blur text-[10px] text-cyber-green font-mono py-1 px-2 rounded border border-cyber-green/30 text-center">
+          SYS.OPERATOR // ACTIVE
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
 
         <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
           
@@ -190,7 +214,7 @@
               <div class="bg-cyber-darker p-3 rounded border border-slate-800">
                 <span class="text-slate-500 block mb-1">DEGREE</span>
                 <span class="text-cyber-green font-bold">B.Tech Electronics & Comm. Eng.</span>
-                <span class="text-slate-400 text-[11px] block mt-0.5">Graduated 2026</span>
+                <span class="text-slate-400 text-[11px] block mt-0.5">Graduated May 2026</span>
               </div>
               <div class="bg-cyber-darker p-3 rounded border border-slate-800">
                 <span class="text-slate-500 block mb-1">SPECIALIZATION TRAINING</span>
